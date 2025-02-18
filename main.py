@@ -50,7 +50,7 @@ def get_option_ratio(option_contracts, current_price):
     for option in option_contracts:
         strike          = option['strike']
         ask             = option['ask']
-        open_interest   = option['openInterest']
+        open_interest   = getattr(option, 'openInterest', 1)
 
         strike_ratio            = abs(current_price - strike) / current_price
         ask_ratio               = ask / current_price
